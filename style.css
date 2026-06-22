@@ -6,8 +6,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #050505;
-
+    background-color: #1d1b1b;
     background-image: radial-gradient(circle at 80% 20%, #1a0b36 0%, transparent 50%), 
                       radial-gradient(circle at 10% 80%, #052c30 0%, transparent 50%);
     color: #ffffff;
@@ -24,14 +23,19 @@ body {
     max-width: 1200px;
     padding: 40px;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    min-height: 100vh;
 }
+
 
 .content {
-    max-width: 700px;
+    flex: 0 0 auto;
+    max-width: 520px;
     text-align: left;
+    z-index: 1;
 }
-
 
 .welcome-tag {
     font-size: 0.9rem;
@@ -43,7 +47,7 @@ body {
 }
 
 .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem); 
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -1px;
@@ -53,7 +57,7 @@ body {
     background: linear-gradient(135deg, #0ccdda 0%, #8109d1 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: block; 
+    display: block;
     margin-top: 5px;
 }
 
@@ -89,7 +93,6 @@ body {
     transition: transform 0.3s ease;
 }
 
-
 .socials a:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(12, 205, 218, 0.5);
@@ -102,12 +105,49 @@ body {
 }
 
 
-@media (max-width: 480px) {
+.spline-wrapper {
+    flex: 1 1 auto;
+    position: relative;
+    height: 600px;
+    min-width: 0;
+    overflow: hidden;
+    clip-path: inset(0 0 50px 0);
+}
+
+.spline-wrapper spline-viewer {
+    width: 100%;
+    height: calc(100% + 50px);
+    display: block;
+}
+
+
+@media (max-width: 900px) {
     .hero {
-        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 20px;
+        min-height: unset;
+        gap: 0;
     }
+
+    .content {
+        max-width: 100%;
+    }
+
+    .spline-wrapper {
+        width: 100%;
+        height: 380px;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
     .socials a {
-        width: 100%; 
+        width: 100%;
         justify-content: center;
+    }
+
+    .spline-wrapper {
+        height: 280px;
     }
 }
